@@ -1,4 +1,3 @@
-import StringTraining;
 public class ArrayTraining {
 
     /**
