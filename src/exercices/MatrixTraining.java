@@ -88,9 +88,10 @@ public class MatrixTraining {
      */
     public int sum(int[][] matrix) {
         int somme=0;
-        ArrayTraining arrayT = new ArrayTraining();
-        for( int[] item : matrix){
-            somme += arrayT.sum(item);
+        for( int[] tab : matrix){
+            for(int item : tab ){
+                somme+=item;
+            }
         }
         return somme;
     }
@@ -101,13 +102,20 @@ public class MatrixTraining {
      * @return if matrix contains searched value, ie: true
      */
     public boolean contains(int[][] matrix, int search) {
-        boolean found=false;
-        int iter=0;
-        int length = matrix.length;
-        ArrayTraining arrayT = new ArrayTraining();
-        while(iter<length && !found){
-            found=arrayT.contains(matrix[iter], search);
-            iter++;
+        boolean found = false;
+        int l = 0, c = 0;
+        int nbLine = matrix.length;
+        int nbCol = 0;
+        while (l<nbLine && !found) {
+            nbCol = matrix[l].length;
+            c = 0;
+            while (c<nbCol && !found) {
+                if (matrix[l][c] == search) {
+                    found=true;
+                }
+                c++;
+            }
+            l++;
         }
         return found;
     }
